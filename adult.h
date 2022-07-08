@@ -1,15 +1,16 @@
-#ifndef CHILD_H
-#define CHILD_H
+#ifndef ADULT_H
+#define ADULT_H
 
 #include "people.h"
 
-class Child : public People
+class Adult : public People
 {
     Q_OBJECT
 public:
-    Child();
-    Child(bool isHealthy,bool isCarrier, bool isIll);
-    ~Child();
+    Adult();
+    Adult(bool isHealthy,bool isCarrier, bool isIll);
+    ~Adult();
+
 
 protected:
     //Отрисовка
@@ -18,4 +19,4 @@ protected:
     QRectF boundingRect() const override;
 };
 
-#endif // CHILD_H
+#endif // ADULT_H

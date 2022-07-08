@@ -13,9 +13,13 @@ public:
     People();
     ~People();
     int health;//Здоровье
+    int risk;//вероятность заразиться
+
     bool mask;//Наличие маски
     bool isVaccinated;//Вакцинация
+
     int timeBeforeIllness;//Время инкубационного периода
+    int sickTime;//Время болезни
     bool isHealthy;//Здоров
     bool isCarrier;//Переносчик
     bool isIll;//Заболел
@@ -23,7 +27,7 @@ public:
     void go();//Идти
 
     /*Обнаружение объектов рядом*/
-    void isPeopleNearby(QList<QGraphicsItem *> objects);
+    void SearchForPeopleNearby(QList<QGraphicsItem *> objects);
 public slots:
     void update();//Обновить
 protected:

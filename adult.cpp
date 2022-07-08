@@ -1,26 +1,25 @@
-#include "child.h"
+#include "adult.h"
 
-Child::Child()
+Adult::Adult()
 {
-    risk = 20;
+    risk = 50;
 }
 
-Child::Child(bool isHealthy, bool isCarrier, bool isIll)
+Adult::Adult(bool isHealthy, bool isCarrier, bool isIll)
 {
     this->isHealthy = isHealthy;
     this->isCarrier = isCarrier;
     this->isIll = isIll;
-    risk = 20;
+    risk = 50;
 }
 
-Child::~Child()
+Adult::~Adult()
 {
 
 }
 
-void Child::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void Adult::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-
     Q_UNUSED(option)
     Q_UNUSED(widget)
 
@@ -36,10 +35,10 @@ void Child::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     else if (isDead)
         painter->setBrush(QColor(Qt::black));
 
-    painter->drawEllipse(0,0,15,15);
+    painter->drawEllipse(0,0,20,20);
 }
 
-QRectF Child::boundingRect() const
+QRectF Adult::boundingRect() const
 {
-    return QRectF(0,0,15,15);
+    return QRectF(0,0,20,20);
 }

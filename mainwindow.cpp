@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     //Добавление детей
-    for(int i = 0; i<15;i++){
+    for(int i = 0; i<10;i++){
         auto child = new Child();
         childs.push_back(child);
 
@@ -32,6 +32,19 @@ MainWindow::MainWindow(QWidget *parent)
         connect(timer,SIGNAL(timeout()),childs[i],SLOT(update()));
     }
 
+    //Добавление взрослых
+    for(int i = 0; i<10;i++){
+        auto newadult = new Adult();
+        adults.push_back(newadult);
+
+        adults[i]->setPos(rand() % (741) + 10
+                          ,rand() % (311) + 10);
+
+        scene->addItem(adults[i]);
+
+        //подключить слот update
+        connect(timer,SIGNAL(timeout()),adults[i],SLOT(update()));
+    }
 
        timer->start(500);
 
@@ -57,5 +70,21 @@ void MainWindow::on_addChild_clicked()
 
     //подключить слот update
     connect(timer,SIGNAL(timeout()),childs[last],SLOT(update()));
+}
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    auto newadult = new Adult(false,false,true);
+    adults.push_back(newadult);
+
+    int last = adults.size() - 1;
+    adults[last]->setPos(rand() % (741) + 10
+                      ,rand() % (311) + 10);
+
+    scene->addItem(adults[last]);
+
+    //подключить слот update
+    connect(timer,SIGNAL(timeout()),adults[last],SLOT(update()));
 }
 

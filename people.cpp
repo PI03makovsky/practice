@@ -1,5 +1,6 @@
 #include "people.h"
 #include "child.h"
+#include "adult.h"
 #include "qgraphicsscene.h"
 #include <cstdlib>
 
@@ -12,6 +13,7 @@ People::People()
     isIll = false;
     isDead = false;
     timeBeforeIllness = 20;
+    sickTime = 80;
 }
 
 People::~People()
@@ -45,15 +47,30 @@ void People::go()
     setPos(newX,newY);
 }
 
-void People::isPeopleNearby(QList<QGraphicsItem *> objects)
+void People::SearchForPeopleNearby(QList<QGraphicsItem *> objects)
 {
     for (QGraphicsItem* someone: objects) {
         if (dynamic_cast<Child*> (someone)){
             //если рядом ребенок
             //и кто-то один не здоров, то второй становится переносчиком
             if (isHealthy == false && static_cast<Child*> (someone)->isHealthy == true){
+                int random = rand() % 100 +1 ;
+                if(random <= risk){
                 static_cast<Child*> (someone)->isHealthy = false;
                 static_cast<Child*> (someone)->isCarrier = true;
+                }
+            }
+
+        }
+        if (dynamic_cast<Adult*> (someone)){
+            //если рядом взрослый
+            //и кто-то один не здоров, то второй становится переносчиком
+            if (isHealthy == false && static_cast<Adult*> (someone)->isHealthy == true){
+                int random = rand() % 100 +1 ;
+                if(random <= risk){
+                static_cast<Adult*> (someone)->isHealthy = false;
+                static_cast<Adult*> (someone)->isCarrier = true;
+                }
             }
 
         }
@@ -66,16 +83,29 @@ void People::update()
     if(!isDead){
         go();
         QList<QGraphicsItem *> peopleAround = scene()->collidingItems(this);
-        isPeopleNearby(peopleAround);
+        SearchForPeopleNearby(peopleAround);
         if(isCarrier == true){
-
             timeBeforeIllness--;
             if(timeBeforeIllness == 0){
                 isCarrier = false;
                 isIll = true;
+                timeBeforeIllness = 20;
             }
-
         }
+        if(isIll == true){
+            sickTime--;
+            if(sickTime == 0){
+                int random = rand() % 100 + 1;
+                isIll = false;
+
+                if(random>50)
+                    isDead = true;
+                else
+                    isHealthy = true;
+                sickTime = 80;
+            }
+        }
+
     }
 
 }

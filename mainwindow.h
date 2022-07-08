@@ -3,6 +3,7 @@
 
 #include "people.h"
 #include "child.h"
+#include "adult.h"
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <QTimer>
@@ -23,12 +24,15 @@ public:
 private slots:
     void on_addChild_clicked();
 
+    void on_pushButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;//сцена
     QTimer *timer;//таймер
     QVector<People*> people;
     QVector<Child*> childs;
+    QVector<Adult*> adults;
 
 };
 #endif // MAINWINDOW_H
