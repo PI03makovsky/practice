@@ -1,4 +1,6 @@
 #include "people.h"
+#include "child.h"
+#include "qgraphicsscene.h"
 #include <cstdlib>
 
 People::People()
@@ -8,6 +10,8 @@ People::People()
     isHealthy = true;
     isCarrier = false;
     isIll = false;
+    isDead = false;
+    timeBeforeIllness = 20;
 }
 
 People::~People()
@@ -41,8 +45,37 @@ void People::go()
     setPos(newX,newY);
 }
 
+void People::isPeopleNearby(QList<QGraphicsItem *> objects)
+{
+    for (QGraphicsItem* someone: objects) {
+        if (dynamic_cast<Child*> (someone)){
+            //если рядом ребенок
+            //и кто-то один не здоров, то второй становится переносчиком
+            if (isHealthy == false && static_cast<Child*> (someone)->isHealthy == true){
+                static_cast<Child*> (someone)->isHealthy = false;
+                static_cast<Child*> (someone)->isCarrier = true;
+            }
+
+        }
+    }
+
+}
+
 void People::update()
 {
-    if(!isDead)
+    if(!isDead){
         go();
+        QList<QGraphicsItem *> peopleAround = scene()->collidingItems(this);
+        isPeopleNearby(peopleAround);
+        if(isCarrier == true){
+
+            timeBeforeIllness--;
+            if(timeBeforeIllness == 0){
+                isCarrier = false;
+                isIll = true;
+            }
+
+        }
+    }
+
 }

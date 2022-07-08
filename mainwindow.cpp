@@ -17,33 +17,21 @@ MainWindow::MainWindow(QWidget *parent)
 
     timer = new QTimer;
 
-    //Добавление людей
-       for(int i = 0; i<5;i++){
-       auto man = new People();
-       people.push_back(man);
 
-       people[i]->setPos(rand() % (741) + 10
-                       ,rand() % (311) + 10);
+    //Добавление детей
+    for(int i = 0; i<15;i++){
+        auto child = new Child();
+        childs.push_back(child);
 
-       scene->addItem(people[i]);
-
-       //подключить слот update
-       connect(timer,SIGNAL(timeout()),people[i],SLOT(update()));
-       }
-
-       //Добавление детей
-          for(int i = 0; i<5;i++){
-          auto child = new Child();
-          childs.push_back(child);
-
-          childs[i]->setPos(rand() % (741) + 10
+        childs[i]->setPos(rand() % (741) + 10
                           ,rand() % (311) + 10);
 
-          scene->addItem(childs[i]);
+        scene->addItem(childs[i]);
 
-          //подключить слот update
-          connect(timer,SIGNAL(timeout()),childs[i],SLOT(update()));
-          }
+        //подключить слот update
+        connect(timer,SIGNAL(timeout()),childs[i],SLOT(update()));
+    }
+
 
        timer->start(500);
 
@@ -53,5 +41,21 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+
+void MainWindow::on_addChild_clicked()
+{
+    auto child = new Child(false,false,true);
+    childs.push_back(child);
+
+    int last = childs.size() - 1;
+    childs[last]->setPos(rand() % (741) + 10
+                      ,rand() % (311) + 10);
+
+    scene->addItem(childs[last]);
+
+    //подключить слот update
+    connect(timer,SIGNAL(timeout()),childs[last],SLOT(update()));
 }
 

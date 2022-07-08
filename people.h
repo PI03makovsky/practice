@@ -15,11 +15,15 @@ public:
     int health;//Здоровье
     bool mask;//Наличие маски
     bool isVaccinated;//Вакцинация
+    int timeBeforeIllness;//Время инкубационного периода
     bool isHealthy;//Здоров
     bool isCarrier;//Переносчик
     bool isIll;//Заболел
     bool isDead;//Умер
     void go();//Идти
+
+    /*Обнаружение объектов рядом*/
+    void isPeopleNearby(QList<QGraphicsItem *> objects);
 public slots:
     void update();//Обновить
 protected:

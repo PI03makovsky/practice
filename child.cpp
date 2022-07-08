@@ -5,6 +5,13 @@ Child::Child()
 
 }
 
+Child::Child(bool isHealthy, bool isCarrier, bool isIll)
+{
+    this->isHealthy = isHealthy;
+    this->isCarrier = isCarrier;
+    this->isIll = isIll;
+}
+
 Child::~Child()
 {
 

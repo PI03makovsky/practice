@@ -8,6 +8,7 @@ class Child : public People
     Q_OBJECT
 public:
     Child();
+    Child(bool isHealthy,bool isCarrier, bool isIll);
     ~Child();
 protected:
     //Отрисовка
