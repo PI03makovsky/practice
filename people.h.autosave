@@ -1,0 +1,17 @@
+#ifndef PEOPLE_H
+#define PEOPLE_H
+
+#include <QGraphicsItem>
+#include <QPainter>
+#include <QObject>
+
+class People : public QObject, public QGraphicsItem
+{
+    Q_OBJECT
+    Q_INTERFACES(QGraphicsItem)
+public:
+    People();
+    
+};
+
+#endif // PEOPLE_H
