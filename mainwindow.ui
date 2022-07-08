@@ -23,6 +23,15 @@
       <height>340</height>
      </rect>
     </property>
+    <property name="backgroundBrush">
+     <brush brushstyle="SolidPattern">
+      <color alpha="255">
+       <red>48</red>
+       <green>238</green>
+       <blue>175</blue>
+      </color>
+     </brush>
+    </property>
    </widget>
   </widget>
  </widget>

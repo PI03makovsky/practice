@@ -1,8 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "people.h"
+#include "child.h"
 #include <QMainWindow>
 #include <QGraphicsScene>
+#include <QTimer>
+#include <qvector.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,6 +22,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    QGraphicsScene *scene;
+    QGraphicsScene *scene;//сцена
+    QTimer *timer;//таймер
+    QVector<People*> people;
+    QVector<Child*> childs;
+
 };
 #endif // MAINWINDOW_H
