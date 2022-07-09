@@ -27,8 +27,8 @@
      <brush brushstyle="SolidPattern">
       <color alpha="255">
        <red>48</red>
-       <green>238</green>
-       <blue>175</blue>
+       <green>88</green>
+       <blue>125</blue>
       </color>
      </brush>
     </property>
@@ -98,7 +98,7 @@
      <string>Пояснение:</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>

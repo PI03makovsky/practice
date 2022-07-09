@@ -37,6 +37,7 @@ void Child::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
         painter->setBrush(QColor(Qt::black));
 
     painter->drawEllipse(0,0,15,15);
+
 }
 
 QRectF Child::boundingRect() const

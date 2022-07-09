@@ -1,24 +1,24 @@
-#include "adult.h"
+#include "oldman.h"
 
-Adult::Adult()
+OldMan::OldMan()
 {
-    risk = 50;
+    risk = 80;
 }
 
-Adult::Adult(bool isHealthy, bool isCarrier, bool isIll)
+OldMan::OldMan(bool isHealthy, bool isCarrier, bool isIll)
 {
     this->isHealthy = isHealthy;
     this->isCarrier = isCarrier;
     this->isIll = isIll;
-    risk = 50;
+    risk = 80;
 }
 
-Adult::~Adult()
+OldMan::~OldMan()
 {
 
 }
 
-void Adult::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void OldMan::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     Q_UNUSED(option)
     Q_UNUSED(widget)
@@ -35,10 +35,12 @@ void Adult::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     else if (isDead)
         painter->setBrush(QColor(Qt::black));
 
-    painter->drawEllipse(0,0,20,20);   
+    painter->drawRect(0,0,18,18);
+
 }
 
-QRectF Adult::boundingRect() const
+
+QRectF OldMan::boundingRect() const
 {
-    return QRectF(0,0,20,20);
+    return QRectF(0,0,18,18);
 }

@@ -13,12 +13,14 @@ SOURCES += \
     child.cpp \
     main.cpp \
     mainwindow.cpp \
+    oldman.cpp \
     people.cpp
 
 HEADERS += \
     adult.h \
     child.h \
     mainwindow.h \
+    oldman.h \
     people.h
 
 FORMS += \

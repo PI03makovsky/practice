@@ -1,6 +1,7 @@
 #include "people.h"
 #include "child.h"
 #include "adult.h"
+#include "oldman.h"
 #include "qgraphicsscene.h"
 #include <cstdlib>
 
@@ -29,7 +30,7 @@ void People::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
 
     painter->setPen(Qt::NoPen);
 
-    painter->setBrush(QColor(Qt::white));
+    painter->setBrush(QColor(Qt::gray));
 
     painter->drawEllipse(0,0,20,20);
 }
@@ -70,6 +71,18 @@ void People::SearchForPeopleNearby(QList<QGraphicsItem *> objects)
                 if(random <= risk){
                 static_cast<Adult*> (someone)->isHealthy = false;
                 static_cast<Adult*> (someone)->isCarrier = true;
+                }
+            }
+
+        }
+        if (dynamic_cast<OldMan*> (someone)){
+            //если рядом взрослый
+            //и кто-то один не здоров, то второй становится переносчиком
+            if (isHealthy == false && static_cast<OldMan*> (someone)->isHealthy == true){
+                int random = rand() % 100 +1 ;
+                if(random <= risk){
+                static_cast<OldMan*> (someone)->isHealthy = false;
+                static_cast<OldMan*> (someone)->isCarrier = true;
                 }
             }
 

@@ -46,6 +46,20 @@ MainWindow::MainWindow(QWidget *parent)
         connect(timer,SIGNAL(timeout()),adults[i],SLOT(update()));
     }
 
+    //Добавление пожилых
+    for(int i = 0; i<10;i++){
+        auto newOld = new OldMan();
+        oldMans.push_back(newOld);
+
+        oldMans[i]->setPos(rand() % (741) + 10
+                          ,rand() % (311) + 10);
+
+        scene->addItem(oldMans[i]);
+
+        //подключить слот update
+        connect(timer,SIGNAL(timeout()),oldMans[i],SLOT(update()));
+    }
+
        timer->start(500);
 
 
@@ -86,5 +100,21 @@ void MainWindow::on_pushButton_2_clicked()
 
     //подключить слот update
     connect(timer,SIGNAL(timeout()),adults[last],SLOT(update()));
+}
+
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    auto newOld = new OldMan(false,false,true);;
+    oldMans.push_back(newOld);
+
+    int last = oldMans.size() - 1;
+    oldMans[last]->setPos(rand() % (741) + 10
+                      ,rand() % (311) + 10);
+
+    scene->addItem(oldMans[last]);
+
+    //подключить слот update
+    connect(timer,SIGNAL(timeout()),oldMans[last],SLOT(update()));
 }
 
