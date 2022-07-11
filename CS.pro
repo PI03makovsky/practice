@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     adult.cpp \
     child.cpp \
+    doctor.cpp \
     main.cpp \
     mainwindow.cpp \
     oldman.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 HEADERS += \
     adult.h \
     child.h \
+    doctor.h \
     mainwindow.h \
     oldman.h \
     people.h

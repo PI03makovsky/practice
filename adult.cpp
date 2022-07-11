@@ -26,7 +26,9 @@ void Adult::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
 
     painter->setPen(Qt::NoPen);
 
-    if(isHealthy)
+    if(isVaccinated)
+         painter->setBrush(QColor(Qt::green));
+    else if(isHealthy)
     painter->setBrush(QColor(Qt::white));
     else if(isCarrier)
         painter->setBrush(QColor(QColor(222,49,99)));
@@ -34,6 +36,7 @@ void Adult::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
         painter->setBrush(QColor(Qt::red));
     else if (isDead)
         painter->setBrush(QColor(Qt::black));
+
 
     painter->drawEllipse(0,0,20,20);   
 }

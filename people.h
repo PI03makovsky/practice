@@ -15,7 +15,6 @@ public:
     int health;//Здоровье
     int risk;//вероятность заразиться
 
-    bool mask;//Наличие маски
     bool isVaccinated;//Вакцинация
 
     int timeBeforeIllness;//Время инкубационного периода

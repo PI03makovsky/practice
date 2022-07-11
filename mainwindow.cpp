@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     //Добавление детей
-    for(int i = 0; i<10;i++){
+    for(int i = 0; i<20;i++){
         auto child = new Child();
         childs.push_back(child);
 
@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     //Добавление взрослых
-    for(int i = 0; i<10;i++){
+    for(int i = 0; i<20;i++){
         auto newadult = new Adult();
         adults.push_back(newadult);
 
@@ -47,7 +47,7 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     //Добавление пожилых
-    for(int i = 0; i<10;i++){
+    for(int i = 0; i<20;i++){
         auto newOld = new OldMan();
         oldMans.push_back(newOld);
 
@@ -60,6 +60,7 @@ MainWindow::MainWindow(QWidget *parent)
         connect(timer,SIGNAL(timeout()),oldMans[i],SLOT(update()));
     }
 
+
        timer->start(500);
 
 
@@ -68,6 +69,7 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+
 }
 
 
@@ -116,5 +118,21 @@ void MainWindow::on_pushButton_3_clicked()
 
     //подключить слот update
     connect(timer,SIGNAL(timeout()),oldMans[last],SLOT(update()));
+}
+
+
+void MainWindow::on_pushButton_clicked()
+{
+    auto newDoc = new Doctor();
+    docs.push_back(newDoc);
+
+    int last = docs.size() - 1;
+    docs[last]->setPos(rand() % (741) + 10
+                      ,rand() % (311) + 10);
+
+    scene->addItem(docs[last]);
+
+    //подключить слот update
+    connect(timer,SIGNAL(timeout()),docs[last],SLOT(update()));
 }
 
